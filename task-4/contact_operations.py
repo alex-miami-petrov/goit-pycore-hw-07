@@ -33,7 +33,7 @@ def add_contact(args: list, book: AddressBook) -> str:
         book.add_record(record)
         message = "Contact added."
     if phone:
-        record.add_phone(Phone(phone))
+        record.add_phone(phone)
     return message
 
 @input_error
@@ -67,7 +67,7 @@ def add_birthday(args: list, book: AddressBook) -> str:
     name, birthday, *_ = args
     record = book.find(name)
     if record:
-        record.add_birthday(Birthday(birthday))
+        record.add_birthday(birthday)
         return "Birthday added."
     else:
         raise KeyError

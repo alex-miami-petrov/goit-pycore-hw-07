@@ -34,8 +34,8 @@ class Record:
     phones: list[Phone] = field(default_factory=list)
     birthday: Birthday = None
 
-    def add_phone(self, phone):
-        self.phones.append(Phone(phone))
+    def add_phone(self, phone_str: str):
+        self.phones.append(Phone(phone_str))
 
     def remove_phone(self, phone):
         if self.phones:
@@ -58,8 +58,8 @@ class Record:
                     return p.value
         return None
 
-    def add_birthday(self, birthday):
-        self.birthday = Birthday(birthday)
+    def add_birthday(self, birthday_str: str):
+        self.birthday = Birthday(birthday_str)
 
     def show_birthday(self):
         if self.birthday:
