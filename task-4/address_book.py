@@ -94,6 +94,10 @@ class AddressBook(UserDict):
                         if day_of_week >= 5:
                              day_of_week = 0
                         birthdays_per_week[day_of_week].append(record.name.value)
+        
+        days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        return "\n".join(f"{days_of_week[i]}: {', '.join(names)}"
+                        for i, names in birthdays_per_week.items() if names)
 
 
 

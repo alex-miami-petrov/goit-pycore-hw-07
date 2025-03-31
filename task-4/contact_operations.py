@@ -86,6 +86,30 @@ def show_all(contacts: dict) -> str:
             result += f"{name}: {phone}\n"
 
         return result.strip()
+    
+@input_error
+def add_birthday(args, book: AddressBook)
+    name, birthday, *_ = args
+    record = book.find(name)
+    if record:
+        record.add_birthday(birthday)
+        return "Birthday added"
+    else:
+        raise KeyError
+    
+@input_error
+def show_birthday(args, book: AddressBook):
+    name, *_ = args
+    record = book.find(name)
+    if record and record.birthday:
+        return record.show_birthday()
+    else:
+        raise KeyError
+    
+@input_error
+def birthdays(args, book: AddressBook):
+    return book.get_upcoming_birthdays()
+    
 
 
 

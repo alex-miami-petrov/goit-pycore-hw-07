@@ -4,3 +4,7 @@ def pharse_input(user_input: str) -> tuple:
     cmd = cmd.strip().lower()
 
     return cmd, *args
+
+
+
+
