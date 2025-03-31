@@ -76,13 +76,17 @@ class AddressBook(UserDict):
         self.data[record.name.value] = record
 
     def find(self, name):
-        return self.data.get(name)
+        for record_name, record in self.data.items():
+            if record_name.lower() == name.lower():
+                return record
+        return None
 
     def delete(self, name):
-        if name in self.data:
-            del self.data[name]
-        else:
-            raise KeyError("Record not found")
+        for record_name, record in self.data.items():
+            if record_name.lower() == name.lower():
+                del self.data[record_name]
+                return
+        raise KeyError("Record not found")
 
     def get_upcoming_birthdays(self) -> str:
         today = datetime.today().date()
