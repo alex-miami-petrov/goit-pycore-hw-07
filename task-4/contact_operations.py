@@ -2,13 +2,13 @@ from address_book import AddressBook, Record, Name, Phone, Birthday
 
 def validate_contact_args(args: list) -> str:
     if len(args) != 2:
-        return "Invalid command. Usage: [command] [ім'я] [номер телефону]"
+        return "Invalid command. Usage: add [ім'я] [номер телефону] або change [ім'я] [старий номер] [новий номер]"
     try:
         name, phone = args
         if not phone.isdigit():
-            return "Invalid phone number. Phone number must contain only digits."
+            return "Invalid phone number. Phone number must contain only 10 digits. Example: add John 1234567890"
     except ValueError:
-        return "Invalid command. Usage: [command] [ім'я] [номер телефону]"
+        return "Invalid command. Usage: add [ім'я] [номер телефону] або change [ім'я] [старий номер] [новий номер]"
     return None
 
 def input_error(func):

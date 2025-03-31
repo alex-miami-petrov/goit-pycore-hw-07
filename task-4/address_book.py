@@ -97,11 +97,18 @@ class AddressBook(UserDict):
             if record.birthday:
                 birthday_date = datetime.strptime(record.birthday.value, "%d.%m.%Y").date()
                 birthday_this_year = birthday_date.replace(year=today.year)
+
                 if today <= birthday_this_year <= next_week:
                     day_of_week = birthday_this_year.weekday()
                     if day_of_week >= 5:
                         day_of_week = 0
-                    birthdays_per_week[day_of_week].append(record.name.value)
+                    birthdays_per_week[day_of_week].append(record.name.value.capitalize()) # зміна
+
+                elif birthday_this_year.year == today.year - 1 and today.month == 1 and today.day <= birthday_date.day and birthday_this_year <= next_week:
+                    day_of_week = birthday_this_year.weekday()
+                    if day_of_week >= 5:
+                        day_of_week = 0
+                    birthdays_per_week[day_of_week].append(record.name.value.capitalize()) # зміна
 
         days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         return "\n".join(f"{days_of_week[i]}: {', '.join(names)}"
